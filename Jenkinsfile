@@ -4,7 +4,7 @@ pipeline {
     jdk 'java17'
     nodejs 'node16'
   }
-  environmet {
+  environment {
     SCANNER_HOME = tool 'sonar-scanner'
     APP_NAME = "reddit-clone-pipeline"
     RELEASE = "1.0.0"
@@ -20,7 +20,7 @@ pipeline {
         cleanWs()
       }
     }
-    stages ('Checkout from Git') {
+    stage ('Checkout from Git') {
       steps {
         git branch: 'main', url: 'https://github.com/Gabinsime75/reddit-clone-app.git'
       }
@@ -40,7 +40,7 @@ pipeline {
         }
       }
     }
-    stage stage('Install Dependencies') {
+    stage ('Install Dependencies') {
       steps {
         sh "trivy fs . > trivyfs.txt"
       }
