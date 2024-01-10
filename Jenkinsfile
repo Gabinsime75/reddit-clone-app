@@ -34,7 +34,7 @@ pipeline {
     }
     stage ("Quality Gate") {
       steps {
-        acript {
+        script {
           waitForQualityGate abortPipeline: false, credentialsId: 'SonarQube-Token'
         }
       }
